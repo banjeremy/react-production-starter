@@ -4,6 +4,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
+  devtool: 'cheap-module-source-map',
   entry: path.join(__dirname, 'src', 'index.js'),
   output: {
     path: path.join(__dirname, '/dist'),
@@ -33,6 +34,11 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env':{
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'index.html')
     }),

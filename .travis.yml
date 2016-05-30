@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - "6.2.0"
+cache:
+  directories:
+    - node_modules
+install:
+  - "npm install"
+script: "npm run dist"
+deploy:
+  provider: s3
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  bucket:
+  endpoint:
+  region: us-east-1
+  skip_cleanup: true
+  local-dir: dist
+  acl: public_read
+  detect_encoding: true
+notifications:
+  email:
+      on_failure: always

@@ -3,23 +3,21 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  devtool: 'eval-source-map',
+  context: path.join(__dirname),
+  devtool: '#source-map',
   entry: [
-    'webpack-dev-server/client?http://0.0.0.0:8080',
-    'webpack/hot/only-dev-server',
-    './src/index'
+    'webpack-hot-middleware/client?path=/__webpack_hmr',
+    './src/index.js'
   ],
   output: {
-    filename: 'bundle.js',
     path: __dirname,
-    libraryTarget: 'umd'
+    publicPath: '/',
+    filename: 'bundle.js'
   },
   plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'index.html')
-    }),
+    new webpack.NoErrorsPlugin()
   ],
   module: {
     loaders: [

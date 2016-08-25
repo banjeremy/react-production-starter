@@ -2,13 +2,28 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import './home.scss';
 
-export default class Home extends Component {
+class Home extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      greeting: ''
+    }
+  }
+
+  componentWillMount() {
+    fetch('/api')
+      .then(response => response.text())
+      .then(greeting => this.setState({ greeting }))
+  }
+
   render() {
     return (
       <div className="home">
-        <h1>Hello, world!</h1>
+        <h1>{this.state.greeting}</h1>
         <Link to="/about">About</Link>
       </div>
-    );
+    )
   }
 }
+
+export default Home;

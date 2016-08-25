@@ -16,7 +16,10 @@ app.use(require('morgan')('short'));
 
 app.use(webpackDevMiddleware(compiler, {
   hot: true,
-  filename: 'bundle.js',
+  // filename: 'bundle.js',
+  inline: true,
+  contentBase: process.cwd() + '/src/public/',
+  lazy: false,
   publicPath: '/',
   noInfo: true,
   historyApiFallback: true,

@@ -20,8 +20,10 @@ class Home extends React.Component {
     return (
       <div className="home">
         <h1>{this.state.greeting}</h1>
-        <img src="built-logo-blue.png" />
-        <Link to="/about">Asbout</Link>
+        <div>
+          <img src={require('./cat.jpg')} />
+        </div>
+        <Link to="/about">About</Link>
       </div>
     )
   }

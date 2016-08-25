@@ -15,9 +15,16 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src', 'public', 'index.html')
+    }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      __DEVELOPMENT__: true,
+      __DEVTOOLS__: true
+    })
   ],
   module: {
     loaders: [
@@ -37,6 +44,10 @@ module.exports = {
       {
         test: /\.scss/,
         loaders: ['style', 'css', 'sass']
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: 'file'
       }
     ]
   }

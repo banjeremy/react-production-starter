@@ -1,7 +1,7 @@
-require('../babel.server');
-const webpack = require('webpack');
+const api = require('../api');
 const config = require('../webpack.config');
 const open = require('open');
+const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 
@@ -13,7 +13,6 @@ const chalk = require('chalk');
 const compiler = webpack(config);
 
 app.use(require('morgan')('short'));
-app.use(express.static('public'));
 
 app.use(webpackDevMiddleware(compiler, {
   hot: true,
@@ -29,14 +28,15 @@ app.use(webpackHotMiddleware(compiler, {
   heartbeat: 10,
 }));
 
-app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
-});
 
-app.get('/api/', (req, res) => {
-  res.send('Hello World!');
-});
+// app.get('/', (req, res) => {
+//   res.sendFile(process.cwd() + '/src/public/index.html');
+// });
+
+app.use('/api/', api);
+app.use(express.static(process.cwd() + '/src/public/'));
 
 app.listen(port, () => {
-  console.log(`\n${chalk.green(`the 🎉  is happening at http://localhost:${port}`)}\n`);
+  console.log(chalk.yellow('Starting the 🎉\nAvailable on:'));
+  console.log(`    ${chalk.green(`http://localhost:${port}`)}\n\n`);
 });

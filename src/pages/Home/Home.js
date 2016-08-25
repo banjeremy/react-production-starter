@@ -20,7 +20,8 @@ class Home extends React.Component {
     return (
       <div className="home">
         <h1>{this.state.greeting}</h1>
-        <Link to="/about">About</Link>
+        <img src="built-logo-blue.png" />
+        <Link to="/about">Asbout</Link>
       </div>
     )
   }

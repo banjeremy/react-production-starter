@@ -7,7 +7,7 @@ module.exports = {
   devtool: 'cheap-module-source-map',
   entry: path.join(__dirname, 'src', 'index.js'),
   output: {
-    path: path.join(__dirname, '/dist'),
+    path: path.join(__dirname, '/static'),
     filename: '[name]-[hash].js'
   },
 
@@ -29,6 +29,10 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('style', 'css!sass')
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: 'file'
       }
     ]
   },
@@ -40,7 +44,7 @@ module.exports = {
       }
     }),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'index.html')
+      template: path.join(__dirname, 'src', 'public', 'index.html')
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin(),

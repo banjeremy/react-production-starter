@@ -37,6 +37,15 @@ module.exports = {
     ]
   },
 
+  progress: true,
+  resolve: {
+    modulesDirectories: [
+      'src',
+      'node_modules'
+    ],
+    extensions: ['', '.json', '.js', '.jsx']
+  },
+
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {

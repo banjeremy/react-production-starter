@@ -43,12 +43,21 @@ module.exports = {
       },
       {
         test: /\.scss/,
-        loaders: ['style', 'css', 'sass']
+        // loaders: ['style', 'css', 'sass']
+        loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!autoprefixer?browsers=last 2 version!sass?outputStyle=expanded&sourceMap'
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         loader: 'file'
       }
     ]
+  },
+  progress: true,
+  resolve: {
+    modulesDirectories: [
+      'src',
+      'node_modules'
+    ],
+    extensions: ['', '.json', '.js', '.jsx']
   }
 };

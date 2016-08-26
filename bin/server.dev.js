@@ -16,7 +16,6 @@ app.use(require('morgan')('short'));
 
 app.use(webpackDevMiddleware(compiler, {
   hot: true,
-  // filename: 'bundle.js',
   inline: true,
   contentBase: process.cwd() + '/src/public/',
   lazy: false,
@@ -30,11 +29,6 @@ app.use(webpackHotMiddleware(compiler, {
   path: '/__webpack_hmr',
   heartbeat: 10,
 }));
-
-
-// app.get('/', (req, res) => {
-//   res.sendFile(process.cwd() + '/src/public/index.html');
-// });
 
 app.use('/api/', api);
 app.use(express.static(process.cwd() + '/src/public/'));

@@ -5,7 +5,7 @@
     "start": "node bin/server.js",
     "dev": "node bin/server.dev.js",
     "lint": "eslint src",
-    "build": "./scripts/build.sh"
+    "build": "scripts/build.sh"
   },
   "repository": {
     "type": "git",

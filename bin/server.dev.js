@@ -17,7 +17,7 @@ app.use(require('morgan')('short'));
 app.use(webpackDevMiddleware(compiler, {
   hot: true,
   inline: true,
-  contentBase: process.cwd() + '/src/public/',
+  contentBase: process.cwd() + '/static/',
   lazy: false,
   publicPath: '/',
   noInfo: true,
@@ -31,7 +31,7 @@ app.use(webpackHotMiddleware(compiler, {
 }));
 
 app.use('/api/', api);
-app.use(express.static(process.cwd() + '/src/public/'));
+app.use(express.static(process.cwd() + '/static/'));
 
 app.listen(port, () => {
   console.log(chalk.yellow('Starting the 🎉\nAvailable on:'));

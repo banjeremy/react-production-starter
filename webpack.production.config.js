@@ -7,7 +7,7 @@ module.exports = {
   devtool: 'cheap-module-source-map',
   entry: path.join(__dirname, 'src', 'index.js'),
   output: {
-    path: path.join(__dirname, '/static'),
+    path: path.join(__dirname, '/tmp/public'),
     filename: '[name]-[hash].js'
   },
 
@@ -44,7 +44,7 @@ module.exports = {
       }
     }),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'public', 'index.html')
+      template: path.join(__dirname, 'static', 'index.html')
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin(),

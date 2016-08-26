@@ -16,7 +16,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'public', 'index.html')
+      template: path.join(__dirname, 'static', 'index.html')
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),

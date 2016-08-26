@@ -1,8 +1,12 @@
 #!/usr/bin/env sh
 
-rm -rf static/
-mkdir static
-cp -r src/public/* static/
+rm -rf tmp/
+mkdir -p tmp/public
+cp -r static/* tmp/public/
 webpack --config ./webpack.production.config.js --progress
+cp -r package.json api bin tmp/
 mkdir -p dist/
-zip -r dist/$npm_package_name-$(date +%s).zip . -i package.json -i .babelrc -i api/\* -i bin/server.js -i static/\*  #. -x .\* -x node_modules/\* -x dist/\* -x src/\* -x tmp/\*
+cd tmp
+zip -r ../dist/$npm_package_name-$(date +%s).zip .
+cd ..
+rm -rf tmp/

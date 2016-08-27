@@ -1,10 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import 'normalize.css';
 
-if (module.hot) {
-  module.hot.accept();
-}
-
 class App extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,

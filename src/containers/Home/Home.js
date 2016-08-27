@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { increment } from 'redux/modules/counter';
+import { incrementAsync } from 'redux/modules/counter';
 import './home.scss';
 
 class Home extends React.Component {
@@ -30,7 +30,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onIncrementClick: () => {
-      dispatch(increment());
+      dispatch(incrementAsync());
     }
   }
 }

@@ -11,7 +11,7 @@ export default function reducer(state = initialState, action = {}) {
     case INCREMENT:
       const { count } = state;
       return {
-        count: count + 1
+        count: count + 5
       };
     default:
       return state;
@@ -23,4 +23,12 @@ export function increment() {
   return {
     type: INCREMENT
   };
+}
+
+export function incrementAsync() {
+  return dispatch => {
+    setTimeout(() => {
+      dispatch(increment());
+    }, 1000);
+  }
 }

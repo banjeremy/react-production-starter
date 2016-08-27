@@ -1,18 +1,19 @@
 const api = require('../api');
+const chalk = require('chalk');
 const config = require('../webpack.config');
 const open = require('open');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-const fallback = require('express-history-api-fallback');
 
 const express = require('express');
 const app = express();
+
 const port = process.env.PORT || 3000;
-const chalk = require('chalk');
+const root = process.cwd() + '/static/';
+global.__DEVELOPMENT__ = true;
 
 const compiler = webpack(config);
-const root = process.cwd() + '/static/';
 
 app.use(require('morgan')('short'));
 

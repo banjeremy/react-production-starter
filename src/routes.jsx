@@ -3,8 +3,8 @@ import { Route, IndexRoute } from 'react-router';
 import {
   App,
   Home,
-  About
-} from './containers'; 
+  About,
+} from './containers';
 
 const routes = (
   <Route path="/" component={App}>
